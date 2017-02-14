@@ -14,4 +14,6 @@ class AppState {
   }
 }
 
+console.dir(new AppState());
+
 export default AppState;

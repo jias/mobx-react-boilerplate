@@ -15,14 +15,20 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+        // 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
+        __CLIENT__: JSON.stringify(true),
+        __SERVER__: JSON.stringify(false),
+    }),
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js?$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
     }]
